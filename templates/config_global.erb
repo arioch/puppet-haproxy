@@ -1,5 +1,5 @@
 global
-    nbproc  <% @processorcount %>
+    nbproc  <%= @global_nbproc %>
     <% global_log.each do |l| %>log     <%= l %>
     <% end %>
     maxconn <%= @global_maxconn %>

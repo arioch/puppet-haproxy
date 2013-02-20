@@ -5,7 +5,7 @@ class haproxy::params {
 
   # Global
   $global_maxonn  = '4096'
-  $global_nbproc  = '1'
+  $global_nbproc  = $::processorcount
   $global_log     = [ '127.0.0.1 local0', '127.0.0.1 local1 notice' ]
   $global_maxconn = '4096'
   $global_chroot  = undef
