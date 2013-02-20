@@ -1,0 +1,8 @@
+backend <%= @name %>
+    mode    <%= @mode %>
+    balance <%= @balance %>
+    <% option.each do |o| %>option  <%= o %>
+    <% end %>
+    <% server.each do |s| %>server  <%= s %>
+    <% end %>
+

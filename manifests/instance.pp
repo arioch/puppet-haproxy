@@ -2,11 +2,13 @@
 #
 define haproxy::instance (
   $ensure          = present,
-  $instance        = 'listen',
+  $balance         = 'leastconn',
   $bind            = '*:80',
-  $mode            = 'http',
-  $option          = undef,
   $default_backend = undef,
+  $instance        = 'listen',
+  $mode            = 'http',
+  $option          = [ 'httpcose', 'checkcache' ],
+  $server          = undef,
 ) {
   case $instance {
     'listen': {
