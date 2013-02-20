@@ -1,0 +1,11 @@
+defaults
+    mode       <%= @defaults_mode %>
+    <% defaults_option.each do |o| %>option     <%= o %>
+    <% end %>
+    retries    <%= @defaults_retries %>
+    maxconn    <%= @defaults_maxconn %>
+    contimeout <%= @defaults_contimeout %>
+    clitimeout <%= @defaults_clitimeout %>
+    srvtimeout <%= @defaults_srvtimeout %>
+    <% defaults_log.each do |l| %>log        <%= l %>
+    <% end %>

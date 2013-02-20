@@ -3,6 +3,30 @@
 class haproxy::params {
   $manage_repo = false
 
+  # Global
+  $global_maxonn  = '4096'
+  $global_nbproc  = '1'
+  $global_log     = [ '127.0.0.1 local0', '127.0.0.1 local1 notice' ]
+  $global_maxconn = '4096'
+  $global_chroot  = undef
+  $global_daemon  = true
+  $global_debug   = false
+  $global_quiet   = false
+
+  # Defaults
+  $defaults_log        = [ 'global' ]
+  $defaults_mode       = 'http'
+  $defaults_retries    = '3'
+  $defaults_maxconn    = '2000'
+  $defaults_contimeout = '5000'
+  $defaults_clitimeout = '50000'
+  $defaults_srvtimeout = '50000'
+  $defaults_option     = [
+    'httplog',
+    'redispatch',
+    'dontlognull'
+  ]
+
   case $::osfamily {
     'RedHat': {
       $config_dir         = '/etc/haproxy'

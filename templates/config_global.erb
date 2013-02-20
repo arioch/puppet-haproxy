@@ -1,0 +1,11 @@
+global
+    nbproc  <% @processorcount %>
+    <% global_log.each do |l| %>log     <%= l %>
+    <% end %>
+    maxconn <%= @global_maxconn %>
+    user    <%= @daemon_user %>
+    group   <%= @daemon_group %>
+    <% if @global_daemon %>daemon<% else %>#daemon<% end %>
+    <% if @global_debug %>debug<% else %>#debug<% end %>
+    <% if @global_quiet %>quiet<% else %>#quiet<% end %>
+
