@@ -8,4 +8,5 @@ global
     <% if @global_daemon %>daemon<% else %>#daemon<% end %>
     <% if @global_debug %>debug<% else %>#debug<% end %>
     <% if @global_quiet %>quiet<% else %>#quiet<% end %>
+    <% if @global_chroot %>chroot <%= @global_chroot %><% else %>#chroot /usr/share/haproxy<% end %>
 
