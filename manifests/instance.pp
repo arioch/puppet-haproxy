@@ -2,7 +2,7 @@
 #
 define haproxy::instance (
   $ensure          = present,
-  $balance         = 'leastconn',
+  $balance         = 'source',
   $bind            = '*:80',
   $default_backend = undef,
   $instance        = 'listen',
