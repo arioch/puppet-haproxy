@@ -39,7 +39,7 @@ class haproxy (
   $global_maxconn      = $::haproxy::params::global_maxconn,
   $global_nbproc       = $::haproxy::params::global_nbproc,
   $global_quiet        = $::haproxy::params::global_quiet,
-
+  $global_stats_socket = $::haproxy::params::global_stats_socket,
 ) inherits haproxy::params {
   class { 'haproxy::install': } ->
   class { 'haproxy::config': } ~>

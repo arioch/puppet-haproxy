@@ -9,4 +9,5 @@ global
     <% if @global_debug %>debug<% else %>#debug<% end %>
     <% if @global_quiet %>quiet<% else %>#quiet<% end %>
     <% if @global_chroot %>chroot <%= @global_chroot %><% else %>#chroot /usr/share/haproxy<% end %>
+    <% if @global_stats_socket %>stats socket <%= @global_stats_socket %><% else %>#stats socket /usr/share/haproxy<% end %>
 
