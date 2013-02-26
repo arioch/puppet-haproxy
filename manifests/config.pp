@@ -20,7 +20,6 @@ class haproxy::config {
       ensure => directory,
       owner  => $::haproxy::daemon_user,
       group  => $::haproxy::daemon_group;
-
   }
 
   if $::haproxy::default_file {
@@ -32,28 +31,36 @@ class haproxy::config {
     }
   }
 
-  concat { "${::haproxy::config_dir}/haproxy.cnf":
+  concat { "${::haproxy::config_dir}/haproxy.cfg":
     owner   => $::haproxy::config_user,
     group   => $::haproxy::config_group,
     mode    => $::haproxy::config_file_mode,
   }
 
-  concat::fragment { 'haproxy.conf_header':
-    target  => "${::haproxy::config_dir}/haproxy.conf",
+  concat::fragment { 'haproxy.cfg_header':
+    target  => "${::haproxy::config_dir}/haproxy.cfg",
     content => "# Managed by Puppet\n",
     order   => 01,
   }
 
-  concat::fragment { 'haproxy.conf_global':
-    target  => "${::haproxy::config_dir}/haproxy.conf",
+  concat::fragment { 'haproxy.cfg_global':
+    target  => "${::haproxy::config_dir}/haproxy.cfg",
     content => template('haproxy/config_global.erb'),
     order   => 02,
   }
 
-  concat::fragment { 'haproxy.conf_defaults':
-    target  => "${::haproxy::config_dir}/haproxy.conf",
+  concat::fragment { 'haproxy.cfg_defaults':
+    target  => "${::haproxy::config_dir}/haproxy.cfg",
     content => template('haproxy/config_defaults.erb'),
     order   => 03,
+  }
+
+  if $::haproxy::stats_enable {
+    concat::fragment { 'haproxy.cfg_stats':
+      target  => "${::haproxy::config_dir}/haproxy.cfg",
+      content => template('haproxy/config_stats.erb'),
+      order   => 04,
+    }
   }
 }
 

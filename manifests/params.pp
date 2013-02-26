@@ -1,7 +1,16 @@
 # = Class haproxy::params
 #
 class haproxy::params {
-  $manage_repo = false
+  $manage_repo          = false
+
+  $stats_auth_enable    = false
+  $stats_auth_pass      = 'secret'
+  $stats_auth_user      = 'haproxy'
+  $stats_enable         = false
+  $stats_listen_address = '127.0.0.1'
+  $stats_listen_port    = '8000'
+  $stats_realm          = 'HAProxy'
+  $stats_url            = '/haproxy'
 
   # Global
   $global_maxonn       = '4096'

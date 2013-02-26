@@ -62,3 +62,20 @@
       ],
     }
 
+### Enable HAProxy stats page
+
+    class { 'haproxy':
+      stats_enable         => true,
+      stats_listen_address => '0.0.0.0',
+      stats_listen_port    => '8000',
+    }
+
+### Enable HAProxy stats page with authentication
+
+    class { 'haproxy':
+      stats_enable      => true,
+      stats_auth_enable => true,
+      stats_auth_user   => 'haproxy',
+      stats_auth_pass   => 'haproxy',
+    }
+
