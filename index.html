@@ -97,6 +97,25 @@
   ],
 }
 </code></pre>
+
+<h3>Enable HAProxy stats page</h3>
+
+<pre><code>class { 'haproxy':
+  stats_enable         =&gt; true,
+  stats_listen_address =&gt; '0.0.0.0',
+  stats_listen_port    =&gt; '8000',
+}
+</code></pre>
+
+<h3>Enable HAProxy stats page with authentication</h3>
+
+<pre><code>class { 'haproxy':
+  stats_enable      =&gt; true,
+  stats_auth_enable =&gt; true,
+  stats_auth_user   =&gt; 'haproxy',
+  stats_auth_pass   =&gt; 'haproxy',
+}
+</code></pre>
       </section>
       <footer>
         <p>This project is maintained by <a href="https://github.com/arioch">arioch</a></p>
