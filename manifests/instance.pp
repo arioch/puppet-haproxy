@@ -10,6 +10,8 @@ define haproxy::instance (
   $option          = [ 'httpcose', 'checkcache' ],
   $server          = undef,
 ) {
+  require haproxy
+
   case $instance {
     'listen': {
       $order = '110'
