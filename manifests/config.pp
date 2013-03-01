@@ -31,6 +31,14 @@ class haproxy::config {
     }
   }
 
+  if $::haproxy::global_chroot {
+    file { $::haproxy::global_chroot:
+      ensure => directory,
+      owner  => $::haproxy::daemon_user,
+      group  => $::haproxy::daemon_group,
+    }
+  }
+
   concat { "${::haproxy::config_dir}/haproxy.cfg":
     owner   => $::haproxy::config_user,
     group   => $::haproxy::config_group,
