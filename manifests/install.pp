@@ -6,8 +6,8 @@ class haproxy::install {
   }
 
   if $::haproxy::pkg_deps {
-    package { $::awstats::pkg_deps:
-      ensure => $::awstats::pkg_ensure,
+    package { $::haproxy::pkg_deps:
+      ensure => $::haproxy::pkg_ensure,
       before => Package[$::haproxy::pkg_list],
     }
   }
