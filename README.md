@@ -39,7 +39,7 @@
     haproxy::instance { 'pool1':
       instance => 'backend',
       balance  => 'roundrobin',
-      option   => [ 'httpclose', 'checkcache' ],
+      option   => [ 'http-server-close', 'checkcache' ],
       server   => [
         'inst1 10.0.1.10:80'
         'inst2 10.0.1.20:80'
