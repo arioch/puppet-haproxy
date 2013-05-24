@@ -1,4 +1,4 @@
-# = Class haproxy
+# == Class haproxy
 #
 class haproxy (
   $config_dir           = $::haproxy::params::config_dir,

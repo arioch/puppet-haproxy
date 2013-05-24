@@ -1,4 +1,4 @@
-# = Class haproxy::params
+# == Class haproxy::params
 #
 class haproxy::params {
   $manage_repo          = false

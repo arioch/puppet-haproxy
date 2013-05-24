@@ -1,4 +1,4 @@
-# = Class haproxy
+# == Class haproxy
 #
 class haproxy::service {
   if $::haproxy::service_dep {

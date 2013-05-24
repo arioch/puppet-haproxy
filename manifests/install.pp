@@ -1,4 +1,4 @@
-# = Class haproxy::install
+# == Class haproxy::install
 #
 class haproxy::install {
   package { $::haproxy::pkg_list:

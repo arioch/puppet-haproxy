@@ -1,4 +1,4 @@
-# = Class haproxy::config
+# == Class haproxy::config
 #
 class haproxy::config {
   File {
