@@ -43,7 +43,7 @@ class haproxy (
   $global_chroot       = $::haproxy::params::global_chroot,
   $global_daemon       = $::haproxy::params::global_daemon,
   $global_debug        = $::haproxy::params::global_debug,
-  $global_log          = $::haproxy::params::global_global_log,
+  $global_log          = $::haproxy::params::global_log,
   $global_maxconn      = $::haproxy::params::global_maxconn,
   $global_nbproc       = $::haproxy::params::global_nbproc,
   $global_quiet        = $::haproxy::params::global_quiet,
