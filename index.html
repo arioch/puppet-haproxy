@@ -28,29 +28,32 @@
         </ul>
       </header>
       <section>
-        <h1>Puppet HAProxy</h1>
+        <h1>
+<a name="puppet-haproxy" class="anchor" href="#puppet-haproxy"><span class="octicon octicon-link"></span></a>Puppet HAProxy</h1>
 
-<h2>Requirements</h2>
+<h2>
+<a name="requirements" class="anchor" href="#requirements"><span class="octicon octicon-link"></span></a>Requirements</h2>
 
 <ul>
 <li><a href="https://github.com/ripienaar/puppet-concat">concat module</a></li>
-<li>Puppetlabs <a href="https://github.com/puppetlabs/puppetlabs-apt">apt module</a> or</li>
-<li>Camptocamp <a href="https://github.com/camptocamp/puppet-apt">apt module</a>
-</li>
-</ul><h2>Tested on...</h2>
+</ul><h2>
+<a name="tested-on" class="anchor" href="#tested-on"><span class="octicon octicon-link"></span></a>Tested on...</h2>
 
 <ul>
 <li>Debian 6 (Squeeze)</li>
-</ul><h2>Example usage</h2>
+</ul><h2>
+<a name="example-usage" class="anchor" href="#example-usage"><span class="octicon octicon-link"></span></a>Example usage</h2>
 
-<h3>Install HAProxy</h3>
+<h3>
+<a name="install-haproxy" class="anchor" href="#install-haproxy"><span class="octicon octicon-link"></span></a>Install HAProxy</h3>
 
 <pre><code>node /box/ {
   include haproxy
 }
 </code></pre>
 
-<h3>Adjust configuration settings</h3>
+<h3>
+<a name="adjust-configuration-settings" class="anchor" href="#adjust-configuration-settings"><span class="octicon octicon-link"></span></a>Adjust configuration settings</h3>
 
 <pre><code>node /box/ {
   class { 'haproxy':
@@ -61,7 +64,8 @@
 }
 </code></pre>
 
-<h3>Create split frontend instance</h3>
+<h3>
+<a name="create-split-frontend-instance" class="anchor" href="#create-split-frontend-instance"><span class="octicon octicon-link"></span></a>Create split frontend instance</h3>
 
 <pre><code>haproxy::instance { 'http-in':
   instance        =&gt; 'frontend',
@@ -70,12 +74,13 @@
 }
 </code></pre>
 
-<h3>Create split backend instance</h3>
+<h3>
+<a name="create-split-backend-instance" class="anchor" href="#create-split-backend-instance"><span class="octicon octicon-link"></span></a>Create split backend instance</h3>
 
 <pre><code>haproxy::instance { 'pool1':
   instance =&gt; 'backend',
   balance  =&gt; 'roundrobin',
-  option   =&gt; [ 'httpclose', 'checkcache' ],
+  option   =&gt; [ 'http-server-close', 'checkcache' ],
   server   =&gt; [
     'inst1 10.0.1.10:80'
     'inst2 10.0.1.20:80'
@@ -83,7 +88,8 @@
 }
 </code></pre>
 
-<h3>Create combined listen instance</h3>
+<h3>
+<a name="create-combined-listen-instance" class="anchor" href="#create-combined-listen-instance"><span class="octicon octicon-link"></span></a>Create combined listen instance</h3>
 
 <pre><code>haproxy::instance { 'pool2':
   instance =&gt; 'listen',
@@ -98,7 +104,8 @@
 }
 </code></pre>
 
-<h3>Enable HAProxy stats page</h3>
+<h3>
+<a name="enable-haproxy-stats-page" class="anchor" href="#enable-haproxy-stats-page"><span class="octicon octicon-link"></span></a>Enable HAProxy stats page</h3>
 
 <pre><code>class { 'haproxy':
   stats_enable         =&gt; true,
@@ -107,7 +114,8 @@
 }
 </code></pre>
 
-<h3>Enable HAProxy stats page with authentication</h3>
+<h3>
+<a name="enable-haproxy-stats-page-with-authentication" class="anchor" href="#enable-haproxy-stats-page-with-authentication"><span class="octicon octicon-link"></span></a>Enable HAProxy stats page with authentication</h3>
 
 <pre><code>class { 'haproxy':
   stats_enable      =&gt; true,
