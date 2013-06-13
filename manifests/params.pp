@@ -49,7 +49,6 @@ class haproxy::params {
       $daemon_group       = ''
       $daemon_user        = ''
       $log_dir            = ''
-      $pid_file           = ''
       $pkg_deps           = undef
       $pkg_ensure         = present
       $pkg_list           = ''
@@ -72,7 +71,6 @@ class haproxy::params {
       $daemon_user        = 'haproxy'
       $default_file       = '/etc/default/haproxy'
       $log_dir            = '/var/log/haproxy'
-      $pid_file           = '/var/run/haproxy.pid'
       $pkg_deps           = undef
       $pkg_ensure         = present
       $pkg_list           = 'haproxy'

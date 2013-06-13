@@ -12,7 +12,6 @@ class haproxy (
   $daemon_user          = $::haproxy::params::daemon_user,
   $log_dir              = $::haproxy::params::log_dir,
   $manage_repo          = $::haproxy::params::manage_repo,
-  $pid_file             = $::haproxy::params::pid_file,
   $pkg_deps             = $::haproxy::params::pkg_deps,
   $pkg_ensure           = $::haproxy::params::pkg_ensure,
   $pkg_list             = $::haproxy::params::pkg_list,
