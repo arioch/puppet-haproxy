@@ -1,5 +1,9 @@
 # Puppet HAProxy
 
+## Build status
+
+[![Build Status](https://travis-ci.org/arioch/puppet-haproxy.png?branch=master)](https://travis-ci.org/arioch/puppet-haproxy)
+
 ## Requirements
 
 * [concat module](https://github.com/ripienaar/puppet-concat)
