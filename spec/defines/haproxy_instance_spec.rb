@@ -15,7 +15,11 @@ describe 'haproxy::instance', :type => :define do
   context 'on Debian with parameter: ensure' do
     let (:facts) { debian_facts }
     let (:title) { '_NAME_' }
-    let (:params) { { :ensure => '_VALUE_', :server => '_VALUE_' } }
+    let (:params) { {
+      :ensure => '_VALUE_',
+      :default_backend => '',
+      :server => [],
+    } }
 
     it { should create_haproxy__instance('_NAME_') }
     it { should contain_concat__fragment('haproxy.cfg_instance__NAME_').with_ensure(/_VALUE_/) }
