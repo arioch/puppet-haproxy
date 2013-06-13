@@ -38,14 +38,14 @@
 #                             ]
 #
 define haproxy::instance (
+  $default_backend,
+  $server,
   $ensure          = present,
   $balance         = 'source',
   $bind            = '*:80',
-  $default_backend = undef,
   $instance        = 'listen',
   $mode            = 'http',
   $option          = [ 'httpcose', 'checkcache' ],
-  $server          = undef,
 ) {
   case $instance {
     'listen': {
