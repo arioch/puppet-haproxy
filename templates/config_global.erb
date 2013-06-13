@@ -1,6 +1,6 @@
 global
     nbproc  <%= @global_nbproc %>
-    <% global_log.each do |l| %>log     <%= l %>
+    <% @global_log.each do |l| %>log     <%= l %>
     <% end %>
     maxconn <%= @global_maxconn %>
     user    <%= @daemon_user %>
