@@ -36,6 +36,8 @@ class haproxy::config {
       fail 'Wrong value for \$global_chroot. Should be a directory.'
     }
 
+    validate_absolute_path($::haproxy::global_chroot)
+
     file { $::haproxy::global_chroot:
       ensure => directory,
       owner  => $::haproxy::daemon_user,
