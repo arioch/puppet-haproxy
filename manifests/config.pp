@@ -33,7 +33,7 @@ class haproxy::config {
 
   if $::haproxy::global_chroot {
     if ! is_string($::haproxy::global_chroot) {
-      fail "Wrong value for \$global_chroot. Should be a directory."
+      fail 'Wrong value for \$global_chroot. Should be a directory.'
     }
 
     file { $::haproxy::global_chroot:

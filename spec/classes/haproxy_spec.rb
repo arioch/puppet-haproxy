@@ -18,10 +18,12 @@ describe 'haproxy', :type => :class do
 
     it { should contain_package('haproxy').with_ensure('present') }
 
-    it { should contain_file('/etc/haproxy/haproxy.cfg').with_ensure('present') }
-    it { should contain_file('/etc/default/haproxy').with_ensure('present') }
-
     it { should contain_concat('/etc/haproxy/haproxy.cfg') }
+    it { should contain_file('/etc/default/haproxy').with_ensure('present') }
+    it { should contain_file('/etc/haproxy/haproxy.cfg').with(
+        'ensure' => 'present'
+      )
+    }
 
     it { should contain_service('haproxy').with(
         'ensure'     => 'running',
@@ -183,7 +185,10 @@ describe 'haproxy', :type => :class do
       }
     }
 
-    it { should contain_concat__fragment('haproxy.cfg_stats').with_content(/stats auth/) }
+    it { should contain_concat__fragment('haproxy.cfg_stats').with(
+        'content' => /stats auth/
+      )
+    }
   end
 
   describe 'on Debian with parameter: stats_auth_pass' do
@@ -196,7 +201,10 @@ describe 'haproxy', :type => :class do
       }
     }
 
-    it { should contain_concat__fragment('haproxy.cfg_stats').with_content(/stats auth.*:_VALUE_/) }
+    it { should contain_concat__fragment('haproxy.cfg_stats').with(
+        'content' => /stats auth.*:_VALUE_/
+      )
+    }
   end
 
   describe 'on Debian with parameter: stats_auth_user' do
@@ -209,7 +217,10 @@ describe 'haproxy', :type => :class do
       }
     }
 
-    it { should contain_concat__fragment('haproxy.cfg_stats').with_content(/stats auth.*_VALUE_:/) }
+    it { should contain_concat__fragment('haproxy.cfg_stats').with(
+        'content' => /stats auth.*_VALUE_:/
+      )
+    }
   end
 
   describe 'on Debian with parameter: stats_enable' do
@@ -229,7 +240,10 @@ describe 'haproxy', :type => :class do
       }
     }
 
-    it { should contain_concat__fragment('haproxy.cfg_stats').with_content(/listen stats.*_VALUE_/) }
+    it { should contain_concat__fragment('haproxy.cfg_stats').with(
+        'content' => /listen stats.*_VALUE_/
+      )
+    }
   end
 
   describe 'on Debian with parameter: stats_listen_port' do
@@ -242,7 +256,10 @@ describe 'haproxy', :type => :class do
       }
     }
 
-    it { should contain_concat__fragment('haproxy.cfg_stats').with_content(/listen stats.*:_VALUE_$/) }
+    it { should contain_concat__fragment('haproxy.cfg_stats').with(
+        'content' => /listen stats.*:_VALUE_$/
+      )
+    }
   end
 
   describe 'on Debian with parameter: stats_realm' do
@@ -255,7 +272,10 @@ describe 'haproxy', :type => :class do
       }
     }
 
-    it { should contain_concat__fragment('haproxy.cfg_stats').with_content(/stats realm.*_VALUE_$/) }
+    it { should contain_concat__fragment('haproxy.cfg_stats').with(
+        'content' => /stats realm.*_VALUE_$/
+      )
+    }
   end
 
   describe 'on Debian with parameter: stats_url' do
@@ -268,84 +288,80 @@ describe 'haproxy', :type => :class do
       }
     }
 
-    it { should contain_concat__fragment('haproxy.cfg_stats').with_content(/stats uri.*_VALUE_$/) }
+    it { should contain_concat__fragment('haproxy.cfg_stats').with(
+        'content' => /stats uri.*_VALUE_$/
+      )
+    }
   end
 
   describe 'on Debian with parameter: defaults_clitimeout' do
     let (:facts) { debian_facts }
-    let (:params) {
-      {
-        :defaults_clitimeout => '_VALUE_'
-      }
-    }
+    let (:params) { { :defaults_clitimeout => '_VALUE_' } }
 
-    it { should contain_concat__fragment('haproxy.cfg_defaults').with_content(/clitimeout.*_VALUE_$/) }
+    it { should contain_concat__fragment('haproxy.cfg_defaults').with(
+        'content' => /clitimeout.*_VALUE_$/
+      )
+    }
   end
 
   describe 'on Debian with parameter: defaults_contimeout' do
     let (:facts) { debian_facts }
-    let (:params) {
-      {
-        :defaults_contimeout => '_VALUE_'
-      }
-    }
+    let (:params) { { :defaults_contimeout => '_VALUE_' } }
 
-    it { should contain_concat__fragment('haproxy.cfg_defaults').with_content(/contimeout.*_VALUE_$/) }
+    it { should contain_concat__fragment('haproxy.cfg_defaults').with(
+        'content' => /contimeout.*_VALUE_$/
+      )
+    }
   end
 
   describe 'on Debian with parameter: defaults_log' do
     let (:facts) { debian_facts }
-    let (:params) {
-      {
-        :defaults_log => [ '_VALUE_' ]
-      }
-    }
+    let (:params) { { :defaults_log => [ '_VALUE_' ] } }
 
-    it { should contain_concat__fragment('haproxy.cfg_defaults').with_content(/log.*_VALUE_$/) }
+    it { should contain_concat__fragment('haproxy.cfg_defaults').with(
+        'content' => /log.*_VALUE_$/
+      )
+    }
   end
 
   describe 'on Debian with parameter: defaults_mode' do
     let (:facts) { debian_facts }
-    let (:params) {
-      {
-        :defaults_mode => '_VALUE_'
-      }
-    }
+    let (:params) { { :defaults_mode => '_VALUE_' } }
 
-    it { should contain_concat__fragment('haproxy.cfg_defaults').with_content(/mode.*_VALUE_$/) }
+    it { should contain_concat__fragment('haproxy.cfg_defaults').with(
+        'content' => /mode.*_VALUE_$/
+      )
+    }
   end
 
   describe 'on Debian with parameter: defaults_option' do
     let (:facts) { debian_facts }
-    let (:params) {
-      {
-        :defaults_option => [ '_VALUE_' ]
-      }
-    }
+    let (:params) { { :defaults_option => [ '_VALUE_' ] } }
 
-    it { should contain_concat__fragment('haproxy.cfg_defaults').with_content(/option.*_VALUE_$/) }
+    it { should contain_concat__fragment('haproxy.cfg_defaults').with(
+        'content' => /option.*_VALUE_$/
+      )
+    }
   end
 
   describe 'on Debian with parameter: defaults_retries' do
     let (:facts) { debian_facts }
-    let (:params) {
-      {
-        :defaults_retries => '_VALUE_'
-      }
-    }
+    let (:params) { { :defaults_retries => '_VALUE_' } }
 
-    it { should contain_concat__fragment('haproxy.cfg_defaults').with_content(/retries.*_VALUE_$/) }
+    it { should contain_concat__fragment('haproxy.cfg_defaults').with(
+        'content' => /retries.*_VALUE_$/
+      )
+    }
   end
 
   describe 'on Debian with parameter: defaults_srvtimeout' do
     let (:facts) { debian_facts }
-    let (:params) {
-      {
-        :defaults_srvtimeout => '_VALUE_'
-      }
-    }
+    let (:params) { { :defaults_srvtimeout => '_VALUE_' } }
 
-    it { should contain_concat__fragment('haproxy.cfg_defaults').with_content(/srvtimeout.*_VALUE_$/) }
+    it { should contain_concat__fragment('haproxy.cfg_defaults').with(
+        'content' => /srvtimeout.*_VALUE_$/
+      )
+    }
   end
 
   describe 'on Debian with parameter: global_chroot' do
@@ -354,16 +370,20 @@ describe 'haproxy', :type => :class do
     context 'global_chroot => string' do
       let (:params) { { :global_chroot => '_VALUE_' } }
 
-      it { should contain_concat__fragment('haproxy.cfg_global') }
-      it { should contain_concat__fragment('haproxy.cfg_global').with_content(/chroot/) }
       it { should contain_file('_VALUE_').with_ensure('directory') }
+      it { should contain_concat__fragment('haproxy.cfg_global') }
+      it { should contain_concat__fragment('haproxy.cfg_global').with(
+          'content' => /chroot/
+        )
+      }
     end
 
     context 'global_chroot => boolean' do
       let (:params) { { :global_chroot => true } }
 
       it do
-        expect { should create_class('haproxy') }.to raise_error(Puppet::Error, /Wrong value for \$global_chroot/)
+        expect { should create_class('haproxy') }.to \
+          raise_error(Puppet::Error, /Wrong value/)
       end
     end
   end
@@ -377,7 +397,10 @@ describe 'haproxy', :type => :class do
       }
     }
 
-    it { should contain_concat__fragment('haproxy.cfg_global').with_content(/daemon/) }
+    it { should contain_concat__fragment('haproxy.cfg_global').with(
+        'content' => /daemon/
+      )
+    }
   end
 
   describe 'on Debian with parameter: global_debug' do
@@ -389,7 +412,10 @@ describe 'haproxy', :type => :class do
       }
     }
 
-    it { should contain_concat__fragment('haproxy.cfg_global').with_content(/debug/) }
+    it { should contain_concat__fragment('haproxy.cfg_global').with(
+        'content' => /debug/
+      )
+    }
   end
 
   describe 'on Debian with parameter: global_log' do
@@ -401,7 +427,10 @@ describe 'haproxy', :type => :class do
       }
     }
 
-    it { should contain_concat__fragment('haproxy.cfg_global').with_content(/_VALUE_/) }
+    it { should contain_concat__fragment('haproxy.cfg_global').with(
+        'content' => /_VALUE_/
+      )
+    }
   end
 
   describe 'on Debian with parameter: global_maxconn' do
@@ -413,7 +442,10 @@ describe 'haproxy', :type => :class do
       }
     }
 
-    it { should contain_concat__fragment('haproxy.cfg_global').with_content(/maxconn.*_VALUE_/) }
+    it { should contain_concat__fragment('haproxy.cfg_global').with(
+        'content' => /maxconn.*_VALUE_/
+      )
+    }
   end
 
   describe 'on Debian with parameter: global_nbproc' do
@@ -425,7 +457,10 @@ describe 'haproxy', :type => :class do
       }
     }
 
-    it { should contain_concat__fragment('haproxy.cfg_global').with_content(/nbproc.*_VALUE_/) }
+    it { should contain_concat__fragment('haproxy.cfg_global').with(
+        'content' => /nbproc.*_VALUE_/
+      )
+    }
   end
 
   describe 'on Debian with parameter: global_quiet' do
@@ -437,7 +472,10 @@ describe 'haproxy', :type => :class do
       }
     }
 
-    it { should contain_concat__fragment('haproxy.cfg_global').with_content(/quiet/) }
+    it { should contain_concat__fragment('haproxy.cfg_global').with(
+        'content' => /quiet/
+      )
+    }
   end
 
   describe 'on Debian with parameter: global_stats_socket' do
@@ -449,7 +487,10 @@ describe 'haproxy', :type => :class do
       }
     }
 
-    it { should contain_concat__fragment('haproxy.cfg_global').with_content(/stats socket.*_VALUE_$/) }
+    it { should contain_concat__fragment('haproxy.cfg_global').with(
+        'content' => /stats socket.*_VALUE_$/
+      )
+    }
   end
 end
 

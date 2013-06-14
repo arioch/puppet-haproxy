@@ -47,17 +47,17 @@ class haproxy::params {
       $config_mode        = '0644'
       $config_purge       = false
       $config_user        = 'root'
-      $daemon_group       = ''
-      $daemon_user        = ''
-      $log_dir            = ''
+      $daemon_group       = undef
+      $daemon_user        = undef
+      $log_dir            = undef
       $pkg_deps           = undef
       $pkg_ensure         = present
-      $pkg_list           = ''
+      $pkg_list           = undef
       $service_dep        = undef
       $service_enable     = true
       $service_ensure     = running
-      $service_hasrestart = ''
-      $service_hasstatus  = ''
+      $service_hasrestart = undef
+      $service_hasstatus  = undef
       $service_name       = 'haproxy'
     }
 

@@ -33,8 +33,8 @@
 #                           Default: undef
 #                           Example:
 #                             [
-#                               'server first  10.1.1.1:1080 cookie first  check inter 1000',
-#                               'server second 10.1.1.2:1080 cookie second check inter 1000'
+#                               'server first  10.1.1.1:1080 cookie first',
+#                               'server second 10.1.1.2:1080 cookie second'
 #                             ]
 #
 define haproxy::instance (
