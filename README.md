@@ -82,3 +82,20 @@
       stats_auth_pass   => 'haproxy',
     }
 
+
+## Unit testing
+
+Plain RSpec:
+
+    $ rake spec
+
+Using bundle:
+
+    $ bundle exec rake spec
+
+Test against a specific Puppet or Facter version:
+
+    $ PUPPET_VERSION=3.2.1  bundle update && bundle exec rake spec
+    $ PUPPET_VERSION=2.7.19 bundle update && bundle exec rake spec
+    $ FACTER_VERSION=1.6.8  bundle update && bundle exec rake spec
+
