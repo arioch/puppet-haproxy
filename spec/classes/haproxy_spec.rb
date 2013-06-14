@@ -17,8 +17,11 @@ describe 'haproxy', :type => :class do
     it { should include_class('haproxy::service') }
 
     it { should contain_package('haproxy').with_ensure('present') }
+
     it { should contain_file('/etc/haproxy/haproxy.cfg').with_ensure('present') }
     it { should contain_file('/etc/default/haproxy').with_ensure('present') }
+
+    it { should contain_concat('/etc/haproxy/haproxy.cfg') }
 
     it { should contain_service('haproxy').with(
         'ensure'     => 'running',
