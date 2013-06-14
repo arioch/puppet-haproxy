@@ -347,17 +347,29 @@ describe 'haproxy', :type => :class do
 
   describe 'on Debian with parameter: global_chroot' do
     let (:facts) { debian_facts }
-    let (:params) { { :global_chroot => true } }
 
-    it { should contain_concat__fragment('haproxy.cfg_global') }
-    it { should contain_concat__fragment('haproxy.cfg_global').with_content(/chroot/) }
+    context 'global_chroot => string' do
+      let (:params) { { :global_chroot => '_VALUE_' } }
+
+      it { should contain_concat__fragment('haproxy.cfg_global') }
+      it { should contain_concat__fragment('haproxy.cfg_global').with_content(/chroot/) }
+      it { should contain_file('_VALUE_').with_ensure('directory') }
+    end
+
+    context 'global_chroot => boolean' do
+      let (:params) { { :global_chroot => true } }
+
+      it do
+        expect { should create_class('haproxy') }.to raise_error(Puppet::Error, /Wrong value for \$global_chroot/)
+      end
+    end
   end
 
   describe 'on Debian with parameter: global_daemon' do
     let (:facts) { debian_facts }
     let (:params) {
       {
-        :global_chroot => true,
+        :global_chroot => '_VALUE_',
         :global_daemon => true
       }
     }
@@ -369,7 +381,7 @@ describe 'haproxy', :type => :class do
     let (:facts) { debian_facts }
     let (:params) {
       {
-        :global_chroot => true,
+        :global_chroot => '_VALUE_',
         :global_debug => true
       }
     }
@@ -381,7 +393,7 @@ describe 'haproxy', :type => :class do
     let (:facts) { debian_facts }
     let (:params) {
       {
-        :global_chroot => true,
+        :global_chroot => '_VALUE_',
         :global_log => [ '_VALUE_' ]
       }
     }
@@ -393,7 +405,7 @@ describe 'haproxy', :type => :class do
     let (:facts) { debian_facts }
     let (:params) {
       {
-        :global_chroot => true,
+        :global_chroot => '_VALUE_',
         :global_maxconn => '_VALUE_'
       }
     }
@@ -405,7 +417,7 @@ describe 'haproxy', :type => :class do
     let (:facts) { debian_facts }
     let (:params) {
       {
-        :global_chroot => true,
+        :global_chroot => '_VALUE_',
         :global_nbproc => '_VALUE_'
       }
     }
@@ -417,7 +429,7 @@ describe 'haproxy', :type => :class do
     let (:facts) { debian_facts }
     let (:params) {
       {
-        :global_chroot => true,
+        :global_chroot => '_VALUE_',
         :global_quiet => true
       }
     }
@@ -429,7 +441,7 @@ describe 'haproxy', :type => :class do
     let (:facts) { debian_facts }
     let (:params) {
       {
-        :global_chroot => true,
+        :global_chroot => '_VALUE_',
         :global_stats_socket => '_VALUE_'
       }
     }
