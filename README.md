@@ -7,6 +7,7 @@
 ## Requirements
 
 * [concat module](https://github.com/ripienaar/puppet-concat)
+* [stdlib module](https://github.com/puppetlabs/puppetlabs-stdlib)
 
 ## Tested on...
 
