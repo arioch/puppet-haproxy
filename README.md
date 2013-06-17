@@ -26,8 +26,9 @@
     node /box/ {
       class { 'haproxy':
         defaults_maxconn => '32768',
-        global_nbproc    => '2',
         global_chroot    => '/usr/share/haproxy',
+        global_nbproc    => '2',
+        global_ulimit    => '65548',
       }
     }
 

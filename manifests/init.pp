@@ -79,6 +79,8 @@
 # $global_stats_socket::    Specify stats socket file.
 #                           Default: '/var/run/haproxy.sock'.
 #
+# $global_ulimit::          Set a per process ulimit for haproxy.
+#
 # $log_dir::                Determine where to send logging information.
 #                           Default: operating system specific.
 #
@@ -166,6 +168,7 @@ class haproxy (
   $global_nbproc        = $::haproxy::params::global_nbproc,
   $global_quiet         = $::haproxy::params::global_quiet,
   $global_stats_socket  = $::haproxy::params::global_stats_socket,
+  $global_ulimit        = $::haproxy::params::global_ulimit,
   $log_dir              = $::haproxy::params::log_dir,
   $manage_repo          = $::haproxy::params::manage_repo,
   $pkg_deps             = $::haproxy::params::pkg_deps,

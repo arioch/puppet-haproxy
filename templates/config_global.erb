@@ -1,5 +1,6 @@
 global
     nbproc  <%= @global_nbproc %>
+    ulimit-n <%= @global_ulimit %>
     <% @global_log.each do |l| %>log     <%= l %>
     <% end %>
     maxconn <%= @global_maxconn %>

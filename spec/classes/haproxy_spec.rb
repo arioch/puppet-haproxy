@@ -501,5 +501,15 @@ describe 'haproxy', :type => :class do
       )
     }
   end
+
+  describe 'on Debian with parameter: global_ulimit' do
+    let (:facts) { debian_facts }
+    let (:params) { { :global_ulimit => '_VALUE_' } }
+
+    it { should contain_concat__fragment('haproxy.cfg_global').with(
+        'content' => /ulimit-n.*_VALUE_$/
+      )
+    }
+  end
 end
 
