@@ -84,9 +84,6 @@
 # $log_dir::                Determine where to send logging information.
 #                           Default: operating system specific.
 #
-# $manage_repo::            Enable/disable a predefined package repository.
-#                           Default: false.
-#
 # $pkg_deps::               Any dependencies that need to be resolved before
 #                           installing the main package.
 #                           Default: operating system specific.
@@ -170,7 +167,6 @@ class haproxy (
   $global_stats_socket  = $::haproxy::params::global_stats_socket,
   $global_ulimit        = $::haproxy::params::global_ulimit,
   $log_dir              = $::haproxy::params::log_dir,
-  $manage_repo          = $::haproxy::params::manage_repo,
   $pkg_deps             = $::haproxy::params::pkg_deps,
   $pkg_ensure           = $::haproxy::params::pkg_ensure,
   $pkg_list             = $::haproxy::params::pkg_list,
