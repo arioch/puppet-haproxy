@@ -8,7 +8,7 @@ describe 'haproxy', :type => :class do
     }
   }
 
-  describe 'on Debian without parameters' do
+  describe 'without parameters' do
     let (:facts) { debian_facts }
 
     it { should create_class('haproxy') }
@@ -33,56 +33,56 @@ describe 'haproxy', :type => :class do
     }
   end
 
-  describe 'on Debian with parameter: config_dir' do
+  describe 'with parameter: config_dir' do
     let (:facts) { debian_facts }
     let (:params) { { :config_dir => '_VALUE_' } }
 
     it { should contain_file('_VALUE_').with_ensure('directory') }
   end
 
-  describe 'on Debian with parameter: config_dir_mode' do
+  describe 'with parameter: config_dir_mode' do
     let (:facts) { debian_facts }
     let (:params) { { :config_dir_mode => '_VALUE_' } }
 
     it { should contain_file('/etc/haproxy').with_mode('_VALUE_') }
   end
 
-  describe 'on Debian with parameter: config_dir_recurse' do
+  describe 'with parameter: config_dir_recurse' do
     let (:facts) { debian_facts }
     let (:params) { { :config_dir_recurse => '_VALUE_' } }
 
     it { should contain_file('/etc/haproxy').with_recurse('_VALUE_') }
   end
 
-  describe 'on Debian with parameter: config_file_mode' do
+  describe 'with parameter: config_file_mode' do
     let (:facts) { debian_facts }
     let (:params) { { :config_file_mode => '_VALUE_' } }
 
     it { should contain_file('/etc/haproxy/haproxy.cfg').with_mode('_VALUE_') }
   end
 
-  describe 'on Debian with parameter: config_group' do
+  describe 'with parameter: config_group' do
     let (:facts) { debian_facts }
     let (:params) { { :config_group => '_VALUE_' } }
 
     it { should contain_file('/etc/haproxy').with_group('_VALUE_') }
   end
 
-  describe 'on Debian with parameter: config_purge' do
+  describe 'with parameter: config_purge' do
     let (:facts) { debian_facts }
     let (:params) { { :config_purge => true } }
 
     it { should contain_file('/etc/haproxy').with_purge(true) }
   end
 
-  describe 'on Debian with parameter: config_user' do
+  describe 'with parameter: config_user' do
     let (:facts) { debian_facts }
     let (:params) { { :config_user => '_VALUE_' } }
 
     it { should contain_file('/etc/haproxy').with_owner('_VALUE_') }
   end
 
-  describe 'on Debian with parameter: daemon_group' do
+  describe 'with parameter: daemon_group' do
     let (:facts) { debian_facts }
     let (:params) {
       {
@@ -94,7 +94,7 @@ describe 'haproxy', :type => :class do
     it { should contain_file('_VALUE_').with_group(/_VALUE_/) }
   end
 
-  describe 'on Debian with parameter: daemon_user' do
+  describe 'with parameter: daemon_user' do
     let (:facts) { debian_facts }
     let (:params) {
       {
@@ -106,77 +106,77 @@ describe 'haproxy', :type => :class do
     it { should contain_file('_VALUE_').with_owner(/_VALUE_/) }
   end
 
-  describe 'on Debian with parameter: log_dir' do
+  describe 'with parameter: log_dir' do
     let (:facts) { debian_facts }
     let (:params) { { :log_dir => '_VALUE_' } }
 
     it { should contain_file('_VALUE_').with_ensure('directory') }
   end
 
-  describe 'on Debian with parameter: pkg_deps' do
+  describe 'with parameter: pkg_deps' do
     let (:facts) { debian_facts }
     let (:params) { { :pkg_deps => '_VALUE_' } }
 
     it { should contain_package('_VALUE_') }
   end
 
-  describe 'on Debian with parameter: pkg_ensure' do
+  describe 'with parameter: pkg_ensure' do
     let (:facts) { debian_facts }
     let (:params) { { :pkg_ensure => '_VALUE_' } }
 
     it { should contain_package('haproxy').with_ensure('_VALUE_') }
   end
 
-  describe 'on Debian with parameter: pkg_list' do
+  describe 'with parameter: pkg_list' do
     let (:facts) { debian_facts }
     let (:params) { { :pkg_list => '_VALUE_' } }
 
     it { should contain_package('_VALUE_') }
   end
 
-  describe 'on Debian with parameter: service_dep' do
+  describe 'with parameter: service_dep' do
     let (:facts) { debian_facts }
     let (:params) { { :service_dep => '_VALUE_' } }
 
     it { should contain_service('_VALUE_') }
   end
 
-  describe 'on Debian with parameter: service_enable' do
+  describe 'with parameter: service_enable' do
     let (:facts) { debian_facts }
     let (:params) { { :service_enable => '_VALUE_' } }
 
     it { should contain_service('haproxy').with_enable('_VALUE_') }
   end
 
-  describe 'on Debian with parameter: service_ensure' do
+  describe 'with parameter: service_ensure' do
     let (:facts) { debian_facts }
     let (:params) { { :service_ensure => '_VALUE_' } }
 
     it { should contain_service('haproxy').with_ensure('_VALUE_') }
   end
 
-  describe 'on Debian with parameter: service_hasrestart' do
+  describe 'with parameter: service_hasrestart' do
     let (:facts) { debian_facts }
     let (:params) { { :service_hasrestart => '_VALUE_' } }
 
     it { should contain_service('haproxy').with_hasrestart('_VALUE_') }
   end
 
-  describe 'on Debian with parameter: service_hasstatus' do
+  describe 'with parameter: service_hasstatus' do
     let (:facts) { debian_facts }
     let (:params) { { :service_hasstatus => '_VALUE_' } }
 
     it { should contain_service('haproxy').with_hasstatus('_VALUE_') }
   end
 
-  describe 'on Debian with parameter: service_name' do
+  describe 'with parameter: service_name' do
     let (:facts) { debian_facts }
     let (:params) { { :service_name => '_VALUE_' } }
 
     it { should contain_service('_VALUE_') }
   end
 
-  describe 'on Debian with parameter: stats_auth_enable' do
+  describe 'with parameter: stats_auth_enable' do
     let (:facts) { debian_facts }
     let (:params) {
       {
@@ -191,7 +191,7 @@ describe 'haproxy', :type => :class do
     }
   end
 
-  describe 'on Debian with parameter: stats_auth_pass' do
+  describe 'with parameter: stats_auth_pass' do
     let (:facts) { debian_facts }
     let (:params) {
       {
@@ -207,7 +207,7 @@ describe 'haproxy', :type => :class do
     }
   end
 
-  describe 'on Debian with parameter: stats_auth_user' do
+  describe 'with parameter: stats_auth_user' do
     let (:facts) { debian_facts }
     let (:params) {
       {
@@ -223,14 +223,14 @@ describe 'haproxy', :type => :class do
     }
   end
 
-  describe 'on Debian with parameter: stats_enable' do
+  describe 'with parameter: stats_enable' do
     let (:facts) { debian_facts }
     let (:params) { { :stats_enable => true } }
 
     it { should contain_concat__fragment('haproxy.cfg_stats') }
   end
 
-  describe 'on Debian with parameter: stats_listen_address' do
+  describe 'with parameter: stats_listen_address' do
     let (:facts) { debian_facts }
     let (:params) {
       {
@@ -246,7 +246,7 @@ describe 'haproxy', :type => :class do
     }
   end
 
-  describe 'on Debian with parameter: stats_listen_port' do
+  describe 'with parameter: stats_listen_port' do
     let (:facts) { debian_facts }
     let (:params) {
       {
@@ -262,7 +262,7 @@ describe 'haproxy', :type => :class do
     }
   end
 
-  describe 'on Debian with parameter: stats_realm' do
+  describe 'with parameter: stats_realm' do
     let (:facts) { debian_facts }
     let (:params) {
       {
@@ -278,7 +278,7 @@ describe 'haproxy', :type => :class do
     }
   end
 
-  describe 'on Debian with parameter: stats_url' do
+  describe 'with parameter: stats_url' do
     let (:facts) { debian_facts }
     let (:params) {
       {
@@ -294,7 +294,7 @@ describe 'haproxy', :type => :class do
     }
   end
 
-  describe 'on Debian with parameter: defaults_clitimeout' do
+  describe 'with parameter: defaults_clitimeout' do
     let (:facts) { debian_facts }
     let (:params) { { :defaults_clitimeout => '_VALUE_' } }
 
@@ -304,7 +304,7 @@ describe 'haproxy', :type => :class do
     }
   end
 
-  describe 'on Debian with parameter: defaults_contimeout' do
+  describe 'with parameter: defaults_contimeout' do
     let (:facts) { debian_facts }
     let (:params) { { :defaults_contimeout => '_VALUE_' } }
 
@@ -314,7 +314,7 @@ describe 'haproxy', :type => :class do
     }
   end
 
-  describe 'on Debian with parameter: defaults_log' do
+  describe 'with parameter: defaults_log' do
     let (:facts) { debian_facts }
     let (:params) { { :defaults_log => [ '_VALUE_' ] } }
 
@@ -324,7 +324,7 @@ describe 'haproxy', :type => :class do
     }
   end
 
-  describe 'on Debian with parameter: defaults_mode' do
+  describe 'with parameter: defaults_mode' do
     let (:facts) { debian_facts }
     let (:params) { { :defaults_mode => '_VALUE_' } }
 
@@ -334,7 +334,7 @@ describe 'haproxy', :type => :class do
     }
   end
 
-  describe 'on Debian with parameter: defaults_option' do
+  describe 'with parameter: defaults_option' do
     let (:facts) { debian_facts }
     let (:params) { { :defaults_option => [ '_VALUE_' ] } }
 
@@ -344,7 +344,7 @@ describe 'haproxy', :type => :class do
     }
   end
 
-  describe 'on Debian with parameter: defaults_retries' do
+  describe 'with parameter: defaults_retries' do
     let (:facts) { debian_facts }
     let (:params) { { :defaults_retries => '_VALUE_' } }
 
@@ -354,7 +354,7 @@ describe 'haproxy', :type => :class do
     }
   end
 
-  describe 'on Debian with parameter: defaults_srvtimeout' do
+  describe 'with parameter: defaults_srvtimeout' do
     let (:facts) { debian_facts }
     let (:params) { { :defaults_srvtimeout => '_VALUE_' } }
 
@@ -364,7 +364,7 @@ describe 'haproxy', :type => :class do
     }
   end
 
-  describe 'on Debian with parameter: global_chroot' do
+  describe 'with parameter: global_chroot' do
     let (:facts) { debian_facts }
 
     context 'global_chroot => valid path' do
@@ -397,7 +397,7 @@ describe 'haproxy', :type => :class do
     end
   end
 
-  describe 'on Debian with parameter: global_daemon' do
+  describe 'with parameter: global_daemon' do
     let (:facts) { debian_facts }
     let (:params) {
       {
@@ -412,7 +412,7 @@ describe 'haproxy', :type => :class do
     }
   end
 
-  describe 'on Debian with parameter: global_debug' do
+  describe 'with parameter: global_debug' do
     let (:facts) { debian_facts }
     let (:params) {
       {
@@ -427,7 +427,7 @@ describe 'haproxy', :type => :class do
     }
   end
 
-  describe 'on Debian with parameter: global_log' do
+  describe 'with parameter: global_log' do
     let (:facts) { debian_facts }
     let (:params) {
       {
@@ -442,7 +442,7 @@ describe 'haproxy', :type => :class do
     }
   end
 
-  describe 'on Debian with parameter: global_maxconn' do
+  describe 'with parameter: global_maxconn' do
     let (:facts) { debian_facts }
     let (:params) {
       {
@@ -457,7 +457,7 @@ describe 'haproxy', :type => :class do
     }
   end
 
-  describe 'on Debian with parameter: global_nbproc' do
+  describe 'with parameter: global_nbproc' do
     let (:facts) { debian_facts }
     let (:params) {
       {
@@ -472,7 +472,7 @@ describe 'haproxy', :type => :class do
     }
   end
 
-  describe 'on Debian with parameter: global_quiet' do
+  describe 'with parameter: global_quiet' do
     let (:facts) { debian_facts }
     let (:params) {
       {
@@ -487,7 +487,7 @@ describe 'haproxy', :type => :class do
     }
   end
 
-  describe 'on Debian with parameter: global_stats_socket' do
+  describe 'with parameter: global_stats_socket' do
     let (:facts) { debian_facts }
     let (:params) {
       {
@@ -502,7 +502,7 @@ describe 'haproxy', :type => :class do
     }
   end
 
-  describe 'on Debian with parameter: global_ulimit' do
+  describe 'with parameter: global_ulimit' do
     let (:facts) { debian_facts }
     let (:params) { { :global_ulimit => '_VALUE_' } }
 

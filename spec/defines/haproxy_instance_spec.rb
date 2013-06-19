@@ -3,7 +3,7 @@ require 'spec_helper'
 describe 'haproxy::instance', :type => :define do
   let (:pre_condition) { '$concat_basedir = "/tmp"' }
 
-  describe 'on Debian without parameters' do
+  describe 'without parameters' do
     let (:facts) { debian_facts }
     let (:title) { '_VALUE_' }
 
@@ -12,7 +12,7 @@ describe 'haproxy::instance', :type => :define do
     end
   end
 
-  describe 'on Debian with parameter: ensure' do
+  describe 'with parameter: ensure' do
     let (:facts) { debian_facts }
     let (:title) { '_NAME_' }
     let (:params) { {
@@ -25,7 +25,7 @@ describe 'haproxy::instance', :type => :define do
     it { should contain_concat__fragment('haproxy.cfg_instance__NAME_').with_ensure(/_VALUE_/) }
   end
 
-  describe 'on Debian with parameter: balance' do
+  describe 'with parameter: balance' do
     let (:facts) { debian_facts }
     let (:title) { '_NAME_' }
     let (:params) { {
@@ -38,7 +38,7 @@ describe 'haproxy::instance', :type => :define do
     it { should contain_concat__fragment('haproxy.cfg_instance__NAME_').with_content(/_VALUE_/) }
   end
 
-  describe 'on Debian with parameter: bind' do
+  describe 'with parameter: bind' do
     let (:facts) { debian_facts }
     let (:title) { '_NAME_' }
     let (:params) { {
@@ -51,7 +51,7 @@ describe 'haproxy::instance', :type => :define do
     it { should contain_concat__fragment('haproxy.cfg_instance__NAME_').with_content(/_VALUE_/) }
   end
 
-  describe 'on Debian with parameter: default_backend' do
+  describe 'with parameter: default_backend' do
     context 'instance => listen' do
       let (:facts) { debian_facts }
       let (:title) { '_NAME_' }
@@ -92,7 +92,7 @@ describe 'haproxy::instance', :type => :define do
     end
   end
 
-  describe 'on Debian with parameter: mode' do
+  describe 'with parameter: mode' do
     let (:facts) { debian_facts }
     let (:title) { '_NAME_' }
     let (:params) { {
@@ -105,7 +105,7 @@ describe 'haproxy::instance', :type => :define do
     it { should contain_concat__fragment('haproxy.cfg_instance__NAME_').with_content(/_VALUE_/) }
   end
 
-  describe 'on Debian with parameter: option' do
+  describe 'with parameter: option' do
     let (:facts) { debian_facts }
     let (:title) { '_NAME_' }
     let (:params) { {
@@ -118,7 +118,7 @@ describe 'haproxy::instance', :type => :define do
     it { should contain_concat__fragment('haproxy.cfg_instance__NAME_').with_content(/_VALUE_/) }
   end
 
-  describe 'on Debian with parameter: server' do
+  describe 'with parameter: server' do
     context 'instance => listen' do
       let (:facts) { debian_facts }
       let (:title) { '_NAME_' }
