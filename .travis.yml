@@ -10,7 +10,11 @@ matrix:
     - rvm: 2.0.0
       env: PUPPET_VERSION="2.7"
 
-script: 'rake spec'
+before_install:
+  - 'gem install bundler'
+
+script:
+  - 'rake spec'
 
 env:
   - PUPPET_VERSION="2.7"
