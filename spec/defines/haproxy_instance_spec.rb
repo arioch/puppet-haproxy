@@ -13,21 +13,35 @@ describe 'haproxy::instance', :type => :define do
   end
 
   describe 'with parameter: ensure' do
-    let (:facts) { debian_facts }
-    let (:title) { '_NAME_' }
-    let (:params) {
-      {
-        :ensure => '_VALUE_',
-        :default_backend => '',
-        :server => [],
+    context 'ensure => present' do
+      let (:facts) { debian_facts }
+      let (:title) { '_NAME_' }
+      let (:params) {
+        {
+          :default_backend => '',
+          :server => [],
+          :ensure => 'present',
+        }
       }
-    }
 
-    it { should create_haproxy__instance('_NAME_') }
-    it { should contain_concat__fragment('haproxy.cfg_instance__NAME_').with(
-        'ensure' => /_VALUE_/
-      )
-    }
+      it { should create_haproxy__instance('_NAME_') }
+      it { should contain_concat__fragment('haproxy.cfg_instance__NAME_') }
+    end
+
+    context 'ensure => present' do
+      let (:facts) { debian_facts }
+      let (:title) { '_NAME_' }
+      let (:params) {
+        {
+          :default_backend => '',
+          :server => [],
+          :ensure => '_VALUE_',
+        }
+      }
+
+      it { should create_haproxy__instance('_NAME_') }
+      it { should_not contain_concat__fragment('haproxy.cfg_instance__NAME_') }
+    end
   end
 
   describe 'with parameter: balance' do

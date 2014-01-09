@@ -12,9 +12,9 @@ describe 'haproxy', :type => :class do
     let (:facts) { debian_facts }
 
     it { should create_class('haproxy') }
-    it { should include_class('haproxy::install') }
-    it { should include_class('haproxy::config') }
-    it { should include_class('haproxy::service') }
+    it { should contain_class('haproxy::install') }
+    it { should contain_class('haproxy::config') }
+    it { should contain_class('haproxy::service') }
 
     it { should contain_package('haproxy').with_ensure('present') }
 
@@ -35,16 +35,16 @@ describe 'haproxy', :type => :class do
 
   describe 'with parameter: config_dir' do
     let (:facts) { debian_facts }
-    let (:params) { { :config_dir => '_VALUE_' } }
+    let (:params) { { :config_dir => '/config/dir' } }
 
-    it { should contain_file('_VALUE_').with_ensure('directory') }
+    it { should contain_file('/config/dir').with_ensure('directory') }
   end
 
   describe 'with parameter: config_dir_mode' do
     let (:facts) { debian_facts }
-    let (:params) { { :config_dir_mode => '_VALUE_' } }
+    let (:params) { { :config_dir_mode => '0777' } }
 
-    it { should contain_file('/etc/haproxy').with_mode('_VALUE_') }
+    it { should contain_file('/etc/haproxy').with_mode('0777') }
   end
 
   describe 'with parameter: config_dir_recurse' do

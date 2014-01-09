@@ -65,11 +65,12 @@ define haproxy::instance (
     }
   }
 
-  concat::fragment { "haproxy.cfg_instance_${name}":
-    ensure  => $ensure,
-    target  => "${haproxy::config_dir}/haproxy.cfg",
-    content => template("haproxy/instance_${instance}.erb"),
-    order   => $order,
+  if $ensure == 'present' {
+    concat::fragment { "haproxy.cfg_instance_${name}":
+      target  => "${haproxy::config_dir}/haproxy.cfg",
+      content => template("haproxy/instance_${instance}.erb"),
+      order   => $order,
+    }
   }
 }
 
