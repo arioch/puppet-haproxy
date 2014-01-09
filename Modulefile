@@ -7,5 +7,5 @@ description   'HAProxy module'
 project_page  'http://arioch.github.io/puppet-haproxy/'
 
 dependency    'puppetlabs/stdlib', '>= 4.0.0'
-dependency    'ripienaar/concat', '>= 0.2.0'
+dependency    'puppetlabs/concat', '>= 1.0.0'
 
