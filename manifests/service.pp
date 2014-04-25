@@ -15,6 +15,7 @@ class haproxy::service {
       enable     => $::haproxy::service_enable,
       hasrestart => $::haproxy::service_hasrestart,
       hasstatus  => $::haproxy::service_hasstatus,
+      restart    => $::haproxy::service_restart,
       require    => [
         Service['::haproxy::service_dep'],
         Class['::haproxy::config'],
@@ -26,6 +27,7 @@ class haproxy::service {
       enable     => $::haproxy::service_enable,
       hasrestart => $::haproxy::service_hasrestart,
       hasstatus  => $::haproxy::service_hasstatus,
+      restart    => $::haproxy::service_restart,
       require    => Class['::haproxy::config'];
     }
   }

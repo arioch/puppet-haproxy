@@ -95,6 +95,12 @@
       stats_auth_pass   => 'haproxy',
     }
 
+### Specify a different command for reloading HAProxy instead of restarting.
+
+    class { 'haproxy':
+      service_hasrestart => false,
+      service_restart    => '/usr/sbin/service haproxy reload'
+    }
 
 ## Unit testing
 

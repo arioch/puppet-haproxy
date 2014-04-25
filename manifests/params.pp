@@ -56,6 +56,7 @@ class haproxy::params {
       $service_hasrestart = undef
       $service_hasstatus  = undef
       $service_name       = 'haproxy'
+      $service_restart    = undef
     }
 
     'Debian': {
@@ -78,6 +79,7 @@ class haproxy::params {
       $service_hasrestart = true
       $service_hasstatus  = true
       $service_name       = 'haproxy'
+      $service_restart    = undef
     }
 
     default: {
