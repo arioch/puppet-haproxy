@@ -114,6 +114,9 @@
 # $service_name::           Specify the name of the init script.
 #                           Default: operating system specific.
 #
+# $service_restart::        Specify a different restart command for reloads.
+#                           Default: operating system specific.
+#
 # $stats_auth_enable::      Enable/disable authentication for stats page.
 #                           Default: false.
 #
@@ -176,6 +179,7 @@ class haproxy (
   $service_hasrestart   = $::haproxy::params::service_hasrestart,
   $service_hasstatus    = $::haproxy::params::service_hasstatus,
   $service_name         = $::haproxy::params::service_name,
+  $service_restart      = $::haproxy::params::service_restart,
   $stats_auth_enable    = $::haproxy::params::stats_auth_enable,
   $stats_auth_pass      = $::haproxy::params::stats_auth_pass,
   $stats_auth_user      = $::haproxy::params::stats_auth_user,
