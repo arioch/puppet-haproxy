@@ -12,6 +12,7 @@
 ## Tested on...
 
 * Debian 6 (Squeeze)
+* Debian 7 (Wheezy)
 
 ## Example usage
 
