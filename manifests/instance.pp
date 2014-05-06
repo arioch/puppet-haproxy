@@ -4,6 +4,15 @@
 #
 # $ensure::                 Default: present
 #
+# $acl::
+#                           Default: undef
+#
+# $acl_backend::
+#                           Default: undef
+#
+# $acl_header::
+#                           Default: undef
+#
 # $balance::                Define the load balancing algorithm to be used
 #                           in a backend.
 #                           Default: source
@@ -39,6 +48,9 @@
 #
 define haproxy::instance (
   $ensure          = present,
+  $acl             = undef,
+  $acl_backend     = undef,
+  $acl_header      = undef,
   $balance         = 'source',
   $bind            = '*:80',
   $default_backend = undef,

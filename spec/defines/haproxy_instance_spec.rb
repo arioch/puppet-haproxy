@@ -44,6 +44,64 @@ describe 'haproxy::instance', :type => :define do
     end
   end
 
+  describe 'with parameter: acl' do
+    let (:facts) { debian_facts }
+    let (:title) { '_NAME_' }
+    let (:params) {
+      {
+        :acl => 'acl_pool1',
+        :default_backend => '',
+        :server => [],
+      }
+    }
+
+    it { should create_haproxy__instance('_NAME_') }
+    it { should_not contain_concat__fragment('haproxy.cfg_instance__NAME_').with(
+        'content' => /acl_pool1/
+      )
+    }
+  end
+
+  describe 'with parameter: acl_backend' do
+    let (:facts) { debian_facts }
+    let (:title) { '_NAME_' }
+    let (:params) {
+      {
+        :acl => 'acl_pool1',
+        :acl_backend => '_BACKEND_',
+        :default_backend => '',
+        :server => [],
+      }
+    }
+
+    it { should create_haproxy__instance('_NAME_') }
+    it { should_not contain_concat__fragment('haproxy.cfg_instance__NAME_').with(
+        'content' => /acl_pool1/,
+        'content' => /_BACKEND_/
+      )
+    }
+  end
+
+  describe 'with parameter: acl_header' do
+    let (:facts) { debian_facts }
+    let (:title) { '_NAME_' }
+    let (:params) {
+      {
+        :acl => 'acl_pool1',
+        :acl_header => '_HEADER_',
+        :default_backend => '',
+        :server => [],
+      }
+    }
+
+    it { should create_haproxy__instance('_NAME_') }
+    it { should_not contain_concat__fragment('haproxy.cfg_instance__NAME_').with(
+        'content' => /acl_pool1/,
+        'content' => /_HEADER_/
+      )
+    }
+  end
+
   describe 'with parameter: balance' do
     let (:facts) { debian_facts }
     let (:title) { '_NAME_' }

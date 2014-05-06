@@ -3,3 +3,8 @@ frontend <%= @name %>
     bind            <%= @bind %>
     default_backend <%= @default_backend %>
 
+<% if @acl -%>
+    acl <%= @acl %> hdr(host) -i <%= @acl_header %>
+    use_backend <%= @acl_backend %> if <%= @acl %>
+<% end -%>
+

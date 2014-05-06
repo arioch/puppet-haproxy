@@ -41,6 +41,17 @@
       default_backend => 'pool1',
     }
 
+### Create split frontend instance, with ACL
+
+    haproxy::instance { 'http-in':
+      instance        => 'frontend',
+      bind            => '*:80',
+      default_backend => 'pool1',
+      acl             => 'acl_pool1',
+      acl_header      => 'example.org',
+      acl_backend     => 'pool1',
+    }
+
 ### Create split backend instance
 
     haproxy::instance { 'pool1':
