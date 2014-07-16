@@ -36,7 +36,7 @@
 #                           Please refer to the link below for a list of
 #                           valid options:
 #                           https://code.google.com/p/haproxy-docs/wiki/mode
-#                           Default: [ 'httpcose', 'checkcache' ]
+#                           Default: [ 'httpclose' ]
 #
 # $server::                 Declare a server in a backend.
 #                           Default: undef
@@ -56,7 +56,7 @@ define haproxy::instance (
   $default_backend = undef,
   $instance        = 'listen',
   $mode            = 'http',
-  $option          = [ 'httpcose', 'checkcache' ],
+  $option          = [ 'httpclose' ],
   $server          = undef,
 ) {
   case $instance {

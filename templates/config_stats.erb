@@ -1,7 +1,7 @@
 <% if @stats_enable %>listen stats <%= @stats_listen_address %>:<%= @stats_listen_port %>
-    mode http
-    stats enable
-    stats uri <%= @stats_url %>
-    stats realm <%= @stats_realm %>
-    <% if @stats_auth_enable %>stats auth <%= @stats_auth_user %>:<%= @stats_auth_pass %><% end %>
+	mode  http
+	stats enable
+	stats uri <%= @stats_url %>
+	stats realm <%= @stats_realm %>
+	<% if @stats_auth_enable %>stats auth <%= @stats_auth_user %>:<%= @stats_auth_pass %><% end %>
 <% end %>

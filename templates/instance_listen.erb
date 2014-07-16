@@ -1,8 +1,11 @@
 listen <%= @name %> <%= @bind %>
-    mode    <%= @mode %>
-    <% @option.each do |o| %>option  <%= o %>
-    <% end %>
-    balance <%= @balance %>
-    <% @server.each do |s| %>server  <%= s %>
-    <% end %>
+	mode    <%= @mode %>
+	balance <%= @balance %>
+<% @option.each do |option| -%>
+	option  <%= option %>
+<% end -%>
+	
+<% @server.each do |server| -%>
+	server  <%= server %>
+<% end -%>
 

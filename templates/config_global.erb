@@ -1,14 +1,23 @@
 global
-    nbproc  <%= @global_nbproc %>
-    ulimit-n <%= @global_ulimit %>
-    <% @global_log.each do |l| %>log     <%= l %>
-    <% end %>
-    maxconn <%= @global_maxconn %>
-    user    <%= @daemon_user %>
-    group   <%= @daemon_group %>
-    <% if @global_daemon %>daemon<% else %>#daemon<% end %>
-    <% if @global_debug %>debug<% else %>#debug<% end %>
-    <% if @global_quiet %>quiet<% else %>#quiet<% end %>
-    <% if @global_chroot %>chroot <%= @global_chroot %><% else %>#chroot /usr/share/haproxy<% end %>
-    <% if @global_stats_socket %>stats socket <%= @global_stats_socket %><% else %>#stats socket /usr/share/haproxy<% end %>
+	nbproc   <%= @global_nbproc %>
+	maxconn  <%= @global_maxconn %>
+	ulimit-n <%= @global_ulimit %>
+<% @global_log.each do |global_log| -%>
+	log      <%= global_log %>
+<% end -%>
+	<% if @global_chroot %>chroot   <%= @global_chroot %><% else %>#chroot /var/lib/haproxy<% end %>
+	<% if @global_stats_socket %>stats    socket <%= @global_stats_socket %><% else %>#stats    socket /var/run/haproxy.sock mode 0600 level admin<% end %>
+	user     <%= @daemon_user %>
+	group    <%= @daemon_group %>
+	<% if @global_daemon %>daemon<% else %>#daemon<% end %>
+	<% if @global_debug %>debug<% else %>#debug<% end %>
+	<% if @global_quiet %>quiet<% else %>#quiet<% end %>
+	
+	# Default SSL material locations
+	ca-base /etc/ssl/certs
+	crt-base /etc/ssl/private
+	
+	# Default ciphers to use on SSL-enabled listening sockets.
+	# For more information, see ciphers(1SSL).
+	ssl-default-bind-ciphers kEECDH+aRSA+AES:kRSA+AES:+AES256:RC4-SHA:!kEDH:!LOW:!EXP:!MD5:!aNULL:!eNULL
 

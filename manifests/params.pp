@@ -15,11 +15,11 @@ class haproxy::params {
   $global_chroot       = undef
   $global_daemon       = true
   $global_debug        = false
-  $global_log          = [ '127.0.0.1 local0', '127.0.0.1 local1 notice' ]
+  $global_log          = [ '/dev/log local0', '/dev/log local1 notice' ]
   $global_maxconn      = '4096'
   $global_nbproc       = $::processorcount
   $global_quiet        = false
-  $global_stats_socket = '/var/run/haproxy.sock'
+  $global_stats_socket = '/var/run/haproxy.sock mode 660 level admin'
   $global_ulimit       = '8192'
 
   # Defaults
