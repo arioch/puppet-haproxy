@@ -299,7 +299,7 @@ describe 'haproxy', :type => :class do
     let (:params) { { :defaults_clitimeout => '_VALUE_' } }
 
     it { should contain_concat__fragment('haproxy.cfg_defaults').with(
-        'content' => /clitimeout.*_VALUE_$/
+        'content' => /timeout.*_VALUE_$/
       )
     }
   end
@@ -309,7 +309,7 @@ describe 'haproxy', :type => :class do
     let (:params) { { :defaults_contimeout => '_VALUE_' } }
 
     it { should contain_concat__fragment('haproxy.cfg_defaults').with(
-        'content' => /contimeout.*_VALUE_$/
+        'content' => /timeout.*_VALUE_$/
       )
     }
   end
@@ -349,7 +349,7 @@ describe 'haproxy', :type => :class do
     let (:params) { { :defaults_srvtimeout => '_VALUE_' } }
 
     it { should contain_concat__fragment('haproxy.cfg_defaults').with(
-        'content' => /srvtimeout.*_VALUE_$/
+        'content' => /timeout.*_VALUE_$/
       )
     }
   end
@@ -487,7 +487,7 @@ describe 'haproxy', :type => :class do
     }
 
     it { should contain_concat__fragment('haproxy.cfg_global').with(
-        'content' => /stats socket.*_VALUE_$/
+        'content' => /stats.*socket.*_VALUE_$/
       )
     }
   end
