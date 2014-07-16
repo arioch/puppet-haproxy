@@ -24,7 +24,6 @@ class haproxy::params {
 
   # Defaults
   $defaults_log        = [ 'global' ]
-  $defaults_mode       = 'http'
   $defaults_retries    = '3'
   $defaults_maxconn    = '2000'
   $defaults_contimeout = '5000'

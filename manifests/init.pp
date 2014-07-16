@@ -41,9 +41,6 @@
 # $defaults_maxconn::       Set max number of connections for defaults section.
 #                           Default: '2000'.
 #
-# $defaults_mode::          Set mode for defaults section.
-#                           Default: 'http'.
-#
 # $defaults_option::        Specify additional options for defaults section.
 #                           Default:
 #                           [ 'httplog', 'redispatch', 'dontlognull' ]
@@ -153,7 +150,6 @@ class haproxy (
   $defaults_contimeout  = $::haproxy::params::defaults_contimeout,
   $defaults_log         = $::haproxy::params::defaults_log,
   $defaults_maxconn     = $::haproxy::params::defaults_maxconn,
-  $defaults_mode        = $::haproxy::params::defaults_mode,
   $defaults_option      = $::haproxy::params::defaults_option,
   $defaults_retries     = $::haproxy::params::defaults_retries,
   $defaults_srvtimeout  = $::haproxy::params::defaults_srvtimeout,

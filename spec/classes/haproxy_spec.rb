@@ -324,16 +324,6 @@ describe 'haproxy', :type => :class do
     }
   end
 
-  describe 'with parameter: defaults_mode' do
-    let (:facts) { debian_facts }
-    let (:params) { { :defaults_mode => '_VALUE_' } }
-
-    it { should contain_concat__fragment('haproxy.cfg_defaults').with(
-        'content' => /mode.*_VALUE_$/
-      )
-    }
-  end
-
   describe 'with parameter: defaults_option' do
     let (:facts) { debian_facts }
     let (:params) { { :defaults_option => [ '_VALUE_' ] } }
