@@ -1,0 +1,51 @@
+{
+  "name": "arioch-haproxy",
+  "version": "0.0.4",
+  "author": "Tom De Vylder",
+  "summary": "HAProxy module",
+  "license": "Apache License, Version 2.0",
+  "source": "https://github.com/arioch/puppet-haproxy",
+  "project_page": "http://arioch.github.io/puppet-haproxy/",
+  "issues_url": "https://github.com/arioch/puppet-haproxy/issues",
+  "description": "HAProxy module",
+  "tags": [
+    "cluser",
+    "failover",
+    "haproxy",
+    "highavailability",
+    "loadbalancing"
+  ],
+  "operatingsystem_support": [
+    {
+      "operatingsystem": "Debian",
+      "operatingsystemrelease": [
+        "6.0",
+        "6.1",
+        "6.2",
+        "6.3",
+        "6.4",
+        "6.5",
+        "6.6",
+        "6.6",
+        "6.7",
+        "6.9",
+        "7.0",
+        "7.1",
+        "7.2",
+        "7.3",
+        "7.4",
+        "7.5"
+      ]
+    }
+  ],
+  "dependencies": [
+    {
+      "name": "puppetlabs/stdlib",
+      "version_requirement": ">= 4.0.0"
+    },
+    {
+      "name": "puppetlabs/concat",
+      "version_requirement": ">= 1.0.2"
+    }
+  ]
+}
