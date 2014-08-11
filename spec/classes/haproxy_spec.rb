@@ -176,6 +176,13 @@ describe 'haproxy', :type => :class do
     it { should contain_service('_VALUE_') }
   end
 
+  describe 'with parameter: service_restart' do
+    let (:facts) { debian_facts }
+    let (:params) { { :service_restart => '_VALUE_' } }
+
+    it { should contain_service('haproxy').with_restart('_VALUE_') }
+  end
+
   describe 'with parameter: stats_auth_enable' do
     let (:facts) { debian_facts }
     let (:params) {
