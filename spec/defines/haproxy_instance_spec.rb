@@ -138,6 +138,25 @@ describe 'haproxy::instance', :type => :define do
     }
   end
 
+  describe 'with parameter: capture' do
+    context 'instance => listen' do
+      let (:facts) { debian_facts }
+      let (:title) { '_NAME_' }
+      let (:params) { {
+        :capture => '_VALUE_',
+        :instance => 'listen',
+        :server => [],
+      } }
+
+      it { should create_haproxy__instance('_NAME_') }
+      it { should_not \
+        contain_concat__fragment('haproxy.cfg_instance__NAME_').with(
+          'content' => /_VALUE_/
+        )
+      }
+    end
+  end
+
   describe 'with parameter: default_backend' do
     context 'instance => listen' do
       let (:facts) { debian_facts }
