@@ -18,89 +18,107 @@
 
 ### Install HAProxy
 
-    node /box/ {
-      include haproxy
-    }
+```
+node /box/ {
+  include haproxy
+}
+```
 
 ### Adjust configuration settings
 
-    node /box/ {
-      class { 'haproxy':
-        defaults_maxconn => '32768',
-        global_chroot    => '/usr/share/haproxy',
-        global_nbproc    => '2',
-        global_ulimit    => '65548',
-      }
-    }
+```
+node /box/ {
+  class { 'haproxy':
+    defaults_maxconn => '32768',
+    global_chroot    => '/usr/share/haproxy',
+    global_nbproc    => '2',
+    global_ulimit    => '65548',
+  }
+}
+```
 
 ### Create split frontend instance
 
-    haproxy::instance { 'http-in':
-      instance        => 'frontend',
-      bind            => '*:80',
-      default_backend => 'pool1',
-    }
+```
+haproxy::instance { 'http-in':
+  instance        => 'frontend',
+  bind            => '*:80',
+  default_backend => 'pool1',
+}
+```
 
 ### Create split frontend instance, with ACL
 
-    haproxy::instance { 'http-in':
-      instance        => 'frontend',
-      bind            => '*:80',
-      default_backend => 'pool1',
-      acl             => 'acl_pool1',
-      acl_header      => 'example.org',
-      acl_backend     => 'pool1',
-    }
+```
+haproxy::instance { 'http-in':
+  instance        => 'frontend',
+  bind            => '*:80',
+  default_backend => 'pool1',
+  acl             => 'acl_pool1',
+  acl_header      => 'example.org',
+  acl_backend     => 'pool1',
+}
+```
 
 ### Create split backend instance
 
-    haproxy::instance { 'pool1':
-      instance => 'backend',
-      balance  => 'roundrobin',
-      option   => [ 'http-server-close', 'checkcache' ],
-      server   => [
-        'inst1 10.0.1.10:80'
-        'inst2 10.0.1.20:80'
-      ],
-    }
+```
+haproxy::instance { 'pool1':
+  instance => 'backend',
+  balance  => 'roundrobin',
+  option   => [ 'http-server-close', 'checkcache' ],
+  server   => [
+    'inst1 10.0.1.10:80'
+    'inst2 10.0.1.20:80'
+  ],
+}
+```
 
 ### Create combined listen instance
 
-    haproxy::instance { 'pool2':
-      instance => 'listen',
-      bind     => '0.0.0.0:80',
-      mode     => 'http',
-      option   => 'persist',
-      balance  => 'roundrobin',
-      server   => [
-        'inst1 10.0.2.10:80',
-        'inst2 10.0.2.20:80',
-      ],
-    }
+```
+haproxy::instance { 'pool2':
+  instance => 'listen',
+  bind     => '0.0.0.0:80',
+  mode     => 'http',
+  option   => 'persist',
+  balance  => 'roundrobin',
+  server   => [
+    'inst1 10.0.2.10:80',
+    'inst2 10.0.2.20:80',
+  ],
+}
+```
 
 ### Enable HAProxy stats page
 
-    class { 'haproxy':
-      stats_enable         => true,
-      stats_listen_address => '0.0.0.0',
-      stats_listen_port    => '8000',
-    }
+```
+class { 'haproxy':
+  stats_enable         => true,
+  stats_listen_address => '0.0.0.0',
+  stats_listen_port    => '8000',
+}
+```
 
 ### Enable HAProxy stats page with authentication
 
-    class { 'haproxy':
-      stats_enable      => true,
-      stats_auth_enable => true,
-      stats_auth_user   => 'haproxy',
-      stats_auth_pass   => 'haproxy',
-    }
+```
+class { 'haproxy':
+  stats_enable      => true,
+  stats_auth_enable => true,
+  stats_auth_user   => 'haproxy',
+  stats_auth_pass   => 'haproxy',
+}
+```
 
 ### Specify a different command for reloading HAProxy instead of restarting.
 
-    class { 'haproxy':
-      service_hasrestart => false,
-      service_restart    => '/usr/sbin/service haproxy reload'
-    }
+```
+class { 'haproxy':
+  service_hasrestart => false,
+  service_restart    => '/usr/sbin/service haproxy reload'
+}
+```
 
 ### Add custom logging options to manage log fields
 
@@ -124,15 +142,21 @@ haproxy::instance { 'pool2':
 
 Plain RSpec:
 
-    $ rake spec
+```
+$ rake spec
+```
 
 Using bundle:
 
-    $ bundle exec rake spec
+```
+$ bundle exec rake spec
+```
 
 Test against a specific Puppet or Facter version:
 
-    $ PUPPET_VERSION=3.2.1  bundle update && bundle exec rake spec
-    $ PUPPET_VERSION=2.7.19 bundle update && bundle exec rake spec
-    $ FACTER_VERSION=1.6.8  bundle update && bundle exec rake spec
+```
+$ PUPPET_VERSION=3.2.1  bundle update && bundle exec rake spec
+$ PUPPET_VERSION=2.7.19 bundle update && bundle exec rake spec
+$ FACTER_VERSION=1.6.8  bundle update && bundle exec rake spec
+```
 
