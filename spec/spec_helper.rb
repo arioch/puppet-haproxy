@@ -19,5 +19,6 @@ def debian_facts
   {
     :operatingsystem => 'Debian',
     :osfamily        => 'Debian',
+    :lsbdistid       => 'Debian',
   }
 end

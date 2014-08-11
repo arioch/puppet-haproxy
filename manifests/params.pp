@@ -1,6 +1,8 @@
 # == Class haproxy::params
 #
 class haproxy::params {
+  $manage_repo = false
+
   # Stats
   $stats_auth_enable    = false
   $stats_auth_pass      = 'secret'

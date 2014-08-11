@@ -110,7 +110,20 @@ describe 'haproxy', :type => :class do
     let (:facts) { debian_facts }
     let (:params) { { :log_dir => '_VALUE_' } }
 
+    it { should contain_class('haproxy::install') }
     it { should contain_file('_VALUE_').with_ensure('directory') }
+  end
+
+  describe 'with parameter: manage_repo' do
+    let (:facts) { debian_facts }
+    let (:params) {
+      {
+        :manage_repo => true,
+        :log_dir => '_VALUE_'
+      }
+    }
+
+    it { should contain_class('haproxy::preinstall') }
   end
 
   describe 'with parameter: pkg_deps' do
