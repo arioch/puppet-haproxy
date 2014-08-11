@@ -21,6 +21,9 @@
 #                           and/or ports in a frontend.
 #                           Default: '*:80'
 #
+# $capture:                 Add custom logging options to manage log fields.
+#                           Default: undef
+#
 # $default_backend:         Specify the backend to use when no "use_backend"
 #                           rule has been matched.
 #                           Default: undef
@@ -53,11 +56,11 @@ define haproxy::instance (
   $acl_header      = undef,
   $balance         = 'source',
   $bind            = '*:80',
+  $capture         = undef,
   $default_backend = undef,
   $instance        = 'listen',
   $mode            = 'http',
   $option          = [ 'httpclose' ],
-  $capture         = undef,
   $server          = undef,
 ) {
   case $instance {

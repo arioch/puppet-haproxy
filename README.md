@@ -102,6 +102,24 @@
       service_restart    => '/usr/sbin/service haproxy reload'
     }
 
+### Add custom logging options to manage log fields
+
+```
+haproxy::instance { 'pool2':
+  instance => 'listen',
+  capture  => [
+    'request header Host len 40',
+    'request header X-Forwarded-For len 50',
+    'request header Accept-Language len 50',
+    'request header Referer len 200',
+    'request header User-Agent len 200',
+    'response header Content-Type len 30',
+    'response header Content-Encoding len 10',
+    'response header Cache-Control len 200',
+    'response header Last-Modified len 200',
+  ],
+```
+
 ## Unit testing
 
 Plain RSpec:
