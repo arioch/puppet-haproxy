@@ -57,6 +57,7 @@ define haproxy::instance (
   $instance        = 'listen',
   $mode            = 'http',
   $option          = [ 'httpclose' ],
+  $capture         = undef,
   $server          = undef,
 ) {
   case $instance {

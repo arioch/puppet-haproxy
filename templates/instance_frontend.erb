@@ -4,5 +4,10 @@ frontend <%= @name %>
 <% @option.each do |option| -%>
 	option          <%= option %>
 <% end -%>
+<% if @capture %>
+  <% @capture.each do |capture| -%>
+	capture         <%= capture %>
+  <% end -%>
+<% end -%>
 	default_backend <%= @default_backend %>
 
