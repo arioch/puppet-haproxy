@@ -189,8 +189,8 @@ class haproxy (
   $stats_realm          = $::haproxy::params::stats_realm,
   $stats_url            = $::haproxy::params::stats_url,
 ) inherits haproxy::params {
-  class { 'haproxy::install': } ->
   class { 'haproxy::preinstall': } ->
+  class { 'haproxy::install': } ->
   class { 'haproxy::config': } ~>
   class { 'haproxy::service': } ->
   Class['haproxy']
