@@ -138,6 +138,14 @@ haproxy::instance { 'pool2':
   ],
 ```
 
+### Manage package repository
+
+```
+class { 'haproxy':
+  manage_repo => true,
+}
+```
+
 ## Unit testing
 
 Plain RSpec:
