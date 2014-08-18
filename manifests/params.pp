@@ -74,7 +74,7 @@ class haproxy::params {
       $log_dir            = '/var/log/haproxy'
       $pkg_deps           = undef
       $pkg_ensure         = present
-      $pkg_list           = 'haproxy'
+      $pkg_list           = [ 'haproxy' ]
       $service_dep        = undef
       $service_enable     = true
       $service_ensure     = running
