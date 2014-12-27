@@ -11,7 +11,7 @@ frontend <%= @name %>
 <% end -%>
 <% if @redirect %>
   <% @redirect.each do |redirect| -%>
-	redirect         <%= redirect %>
+	redirect        <%= redirect %>
   <% end -%>
 <% else -%>
 	default_backend <%= @default_backend %>
