@@ -138,6 +138,34 @@ haproxy::instance { 'pool2':
   ],
 ```
 
+### Redirect rules on frontend instance
+
+First, make http frontend with redirect rules:
+
+```
+haproxy::instance { 'http_in':
+  listen   => '*:80',
+  mode     => 'http',
+  instance => 'frontend',
+  redirect => [ 
+    'scheme https if { hdr(Host) -i www.example.com } !{ ssl_fc }',
+    'scheme https if { hdr(Host) -i example.com } !{ ssl_fc }',
+    'location https://www.example.com',
+  ]
+}
+```
+
+Then, make an https frontend for redirect to:
+
+```
+haproxy::instance { 'https_in':
+  listen          => '*:443 ssl crt /etc/haproxy/ssl/example.com.pem',
+  mode            => 'http',
+  instance        => 'frontend',
+  default_backend => 'backend'
+}
+```
+
 ### Manage package repository
 
 ```

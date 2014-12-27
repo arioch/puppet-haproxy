@@ -9,5 +9,12 @@ frontend <%= @name %>
 	capture         <%= capture %>
   <% end -%>
 <% end -%>
+<% if @redirect %>
+  <% @redirect.each do |redirect| -%>
+	redirect         <%= redirect %>
+  <% end -%>
+<% else -%>
 	default_backend <%= @default_backend %>
+<% end -%>
+
 

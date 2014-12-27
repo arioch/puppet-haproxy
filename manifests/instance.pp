@@ -24,6 +24,16 @@
 # $capture:                 Add custom logging options to manage log fields.
 #                           Default: undef
 #
+# $redirect:                Redirect rules, for example http to https.
+#                           If specified, removes 'default_backend' option.
+#                           Default: undef
+#                           Example:
+#                              redirect => [ 
+#                                'scheme https if { hdr(Host) -i www.example.com } !{ ssl_fc }',
+#                                'scheme https if { hdr(Host) -i example.com } !{ ssl_fc }',
+#                                'location https://www.example.com',
+#                              ]
+#
 # $default_backend:         Specify the backend to use when no "use_backend"
 #                           rule has been matched.
 #                           Default: undef
@@ -57,6 +67,7 @@ define haproxy::instance (
   $balance         = 'source',
   $bind            = '*:80',
   $capture         = undef,
+  $redirect        = undef,
   $default_backend = undef,
   $instance        = 'listen',
   $mode            = 'http',
